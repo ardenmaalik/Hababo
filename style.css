@@ -1,0 +1,99 @@
+body {
+	width: 100%;
+	margin: 0;
+}
+
+.wrapper {
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.transfer-payment-freq,
+.two-yr-average,
+.gross-up-income,
+.downpayment,
+.sales-proceeds {
+	width: 350px;
+	/* height: 100%; */
+	margin: 0;
+	background-color: purple;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+}
+
+.two-yr-average,
+.gross-up-income {
+	background-color: rgb(143, 23, 23);
+}
+
+.downpayment,
+.sales-proceeds {
+	background-color: rgb(150, 57, 4);
+}
+
+form {
+	border-radius: 10px;
+}
+
+form h3 {
+	padding-top: 15px;
+	font-family: "Times New Roman", Times, serif;
+}
+
+.container {
+	width: 95%;
+	padding: 5px;
+	color: #fff;
+	margin: 10px;
+}
+
+.margin-10 {
+	margin: 10px;
+}
+
+.flex {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+
+select {
+	width: 173px;
+}
+
+.btn {
+	background-color: blueviolet;
+	color: white;
+	padding: 15px 20px;
+	text-decoration: none;
+	text-align: center;
+	display: inline-block;
+	font-size: 14px;
+	border: none;
+}
+
+h3 {
+	margin: 10px 0 15px 10px;
+	color: #fff;
+}
+
+.output h2 {
+	font-size: 16px;
+}
+
+.new-pay {
+	display: flex;
+	flex-flow: column;
+	margin-top: 20px;
+}
+
+#output {
+	display: flex;
+	flex-flow: column;
+	margin-top: 20px;
+}
+
+.output {
+	padding-top: 15px;
+	padding-right: 15px;
+}
