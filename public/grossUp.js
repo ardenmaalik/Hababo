@@ -9,7 +9,10 @@ class GrossUp extends Component {
 		console.log(x);
 
 		this.xtotal.innerHTML = `
-        <h2>${x.toFixed(2)}</h2>
+        <h2>$${x
+					.toFixed(2)
+					.toString()
+					.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}</h2>
         `;
 		console.log(this.xtotal);
 	}

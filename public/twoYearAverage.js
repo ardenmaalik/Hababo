@@ -8,27 +8,38 @@ class TwoYearAverage extends Component {
 		let variance = varianceTotal;
 
 		this.xtotal.innerHTML = `
-        <h2>${twoYrAvg.toFixed(2)}</h2>
+		<h2>$${twoYrAvg
+			.toFixed(2)
+			.toString()
+			.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}</h2>
         `;
 
 		this.ytotal.innerHTML = `
-        <h2>${variance.toFixed(2)} </h2>
-        `;
-		console.log(this.xtotal, this.ytotal);
+		<h2>${variance
+			.toFixed(2)
+			.toString()
+			.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}% </h2>
+		`;
+
+		if (variance > 15) {
+			this.ytotal.style.backgroundColor = "indianred";
+		}
 	}
 
 	twoYrAvg(a, b) {
 		let yearOne = a;
 		let yearTwo = b;
 
-		return (+yearOne + +yearTwo) / 2;
+		let total = (+yearOne + +yearTwo) / 2;
+		return total;
 	}
 
 	varianceOutputCalc(c, d) {
 		let twoYearOutput = c;
 		let yearOne = d;
 
-		return ((+twoYearOutput - +yearOne) / +twoYearOutput) * 100;
+		let total = ((+twoYearOutput - +yearOne) / +twoYearOutput) * 100;
+		return total;
 	}
 
 	twoYrCalc() {
@@ -55,12 +66,12 @@ class TwoYearAverage extends Component {
 			<h3>2 Year Average</h3>
 			<div class="container">
 				<div class="yr-one flex margin-10">
-					<label for="Year 1">Year 1: </label>
+					<label for="Previous Year">Previous Year: </label>
 					<input type="text" class="yr-one-input" id="yr-one" />
 				</div>
 
 				<div class="yr-two flex margin-10">
-					<label for="Year 2">Year 2: </label>
+					<label for="Current Year">Current Year: </label>
 					<input type="text" class="yr-two-input" id="yr-two" />
 				</div>
 

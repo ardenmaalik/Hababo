@@ -10,7 +10,10 @@ class SalesProceeds extends Component {
 		this.xtotal.innerHTML = `
         <div id="sales-proceeds-output flex margin-10">
 						<label for="Sales Proceeds">Estimate: </label>
-						<h2>${salesProceeds.toFixed(2)}</h2>
+						<h2>$${salesProceeds
+							.toFixed(2)
+							.toString()
+							.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}</h2>
 					</div>
 		`;
 
@@ -23,7 +26,9 @@ class SalesProceeds extends Component {
 		let realtorFee = c;
 		let debts = d;
 
-		return salesPrice - mortgage - salesPrice * realtorFee - debts;
+		let total = salesPrice - mortgage - debts - salesPrice * realtorFee;
+
+		return total;
 	}
 
 	salesProceeds() {

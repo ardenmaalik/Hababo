@@ -6,7 +6,9 @@ class TransferFrequency extends Component {
 	totalOutput(newPay) {
 		let newPayment = newPay;
 		this.total.innerHTML = `
-        <h2>${newPayment.toFixed(2)} </h2>
+        <h2>$${newPayment
+					.toFixed(2)
+					.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")} </h2>
         `;
 		console.log(this.total);
 	}

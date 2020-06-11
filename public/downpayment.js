@@ -13,19 +13,31 @@ class Downpayment extends Component {
 		this.xtotal.innerHTML = `
         <div id="downpayment-output flex margin-10">
 					<label for="Downpayment">Downpayment: </label>
-					<h2>${dp.toFixed(2)}</h2>
+					<h2>$${dp
+						.toFixed(2)
+						.toString()
+						.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}</h2>
 				</div>
-				<div id="closing-costs-output flex margin-10">
-					<label for="Closing Costs">Closing Costs: </label>
-					<h2>${cc.toFixed(2)}</h2>
-				</div>
+					<div id="closing-cost-output flex margin-10">
+						<label for="Closing Costs">Closing Costs: </label>
+						<h2>$${cc
+							.toFixed(2)
+							.toString()
+							.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}</h2>
+					</div>
 				<div id="total-dp-output flex margin-10">
 					<label for="Total Downpayment">Total Downpayment: </label>
-					<h2>${tdp.toFixed(2)}</h2>
+					<h2>$${tdp
+						.toFixed(2)
+						.toString()
+						.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}</h2>
 				</div>
 				<div id="less-dp-output flex margin-10">
 					<label for="Less Deposit">Less Deposit: </label>
-					<h2>${ld.toFixed(2)}</h2>
+					<h2>$${ld
+						.toFixed(2)
+						.toString()
+						.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}</h2>
 				</div>
 		`;
 
@@ -36,28 +48,35 @@ class Downpayment extends Component {
 		let purchasePrice = a;
 		let netFirstMortgage = b;
 
-		return purchasePrice - netFirstMortgage;
+		let total = purchasePrice - netFirstMortgage;
+
+		return total;
 	}
 
 	closingCostsCalc(c, d) {
-		let closingCosts = c;
+		let cCostPurchase = c;
 		let purchasePrice = d;
 
-		return closingCosts * 0.01 * purchasePrice;
+		let total = cCostPurchase * 0.01 * purchasePrice;
+
+		return total;
 	}
 
 	totalDownpaymentCalc(e, f) {
 		let totalDownpayment = e;
 		let closingCosts = f;
-
-		return totalDownpayment + closingCosts;
+		console.log(closingCosts);
+		console.log(totalDownpayment);
+		let total = totalDownpayment + closingCosts;
+		return total;
 	}
 
 	lessDeposit(g, h) {
 		let totalDownpayment = g;
 		let dpOnOffer = h;
 
-		return totalDownpayment - dpOnOffer;
+		let total = totalDownpayment - dpOnOffer;
+		return total;
 	}
 
 	downpayment() {
@@ -69,7 +88,7 @@ class Downpayment extends Component {
 		let dpOnOffer = document.getElementById("deposit-offer-input").value;
 
 		let downpayment = this.downpaymentCalc(+purchasePrice, +netFirstMortgage);
-		let closingCosts = this.closingCostsCalc(+purchasePrice, +cCostPercentage);
+		let closingCosts = this.closingCostsCalc(+cCostPercentage, +purchasePrice);
 		let totalDownpayment = this.totalDownpaymentCalc(downpayment, closingCosts);
 		let lessDeposit = this.lessDeposit(totalDownpayment, dpOnOffer);
 
@@ -114,16 +133,13 @@ class Downpayment extends Component {
 						class="cc-percentage-input"
 					/>
 				</div>
-				<div class="closing-cost-monetary flex margin-10">
-						<label for="Closing Cost">CC ($): </label>
-					<input type="text" id="cc-monetary-input" class="cc-monetary-input" />
-				</div>
+				
 				<div class = 'output flex margin-10'>
 					<div id="downpayment-output flex margin-10">
 						<label for="Downpayment">Downpayment: </label>
 						<h2>${0}</h2>
 					</div>
-					<div id="closing-costs-output flex margin-10">
+					<div id="closing-cost-output flex margin-10">
 						<label for="Closing Costs">Closing Costs: </label>
 						<h2>${0}</h2>
 					</div>
